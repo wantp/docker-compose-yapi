@@ -1,0 +1,21 @@
+version: "3"
+services:
+  yapi:
+    build:
+      context: ./yapi
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    ports:
+      - 9090:9090
+      - 3000:3000
+    tty: true
+    restart: always
+    networks:
+      - default
+
+  mongo:
+    image: mongo
+    restart: always
+
+networks:
+  default:
